@@ -323,8 +323,15 @@ function get3TopItems(arr) {
  *   [ null, 1, 'elephant' ] => 1
  *   [ 1, '2' ] => 1
  */
-function getPositivesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getPositivesCount(arr) {
+  let res = 0;
+  arr.reduce((acc, item) => {
+    if (item > 0 && Number.isInteger(item)) {
+      res += 1;
+    }
+    return 0;
+  }, 0);
+  return res;
 }
 
 /**
@@ -341,7 +348,58 @@ function getPositivesCount(/* arr */) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-  return arr;
+  const res = [];
+  arr.forEach((item) => {
+    if (item === 'zero') {
+      res.push(item);
+    }
+  });
+  arr.forEach((item) => {
+    if (item === 'one') {
+      res.push(item);
+    }
+  });
+  arr.forEach((item) => {
+    if (item === 'two') {
+      res.push(item);
+    }
+  });
+  arr.forEach((item) => {
+    if (item === 'three') {
+      res.push(item);
+    }
+  });
+  arr.forEach((item) => {
+    if (item === 'four') {
+      res.push(item);
+    }
+  });
+  arr.forEach((item) => {
+    if (item === 'five') {
+      res.push(item);
+    }
+  });
+  arr.forEach((item) => {
+    if (item === 'six') {
+      res.push(item);
+    }
+  });
+  arr.forEach((item) => {
+    if (item === 'seven') {
+      res.push(item);
+    }
+  });
+  arr.forEach((item) => {
+    if (item === 'eight') {
+      res.push(item);
+    }
+  });
+  arr.forEach((item) => {
+    if (item === 'nine') {
+      res.push(item);
+    }
+  });
+  return res;
 }
 
 /**
@@ -472,13 +530,7 @@ function sortCitiesArray(arr) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(n) {
-  const zero = new Array(n).fill(0);
-  const arr = new Array(n).fill(zero);
-  for (let i = 0; i < arr.length; i += 1) {
-    arr[i][i] = 1;
-  }
-  return arr;
+function getIdentityMatrix() {
 }
 
 /**
@@ -494,16 +546,7 @@ function getIdentityMatrix(n) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(start, end) {
-  const res = [];
-  if (start === end) {
-    res.push(start);
-  } else {
-    for (let i = start; i <= end; i += 1) {
-      res.push(i);
-    }
-  }
-  return res;
+function getIntervalArray() {
 }
 
 /**
@@ -518,13 +561,8 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-  const res = [];
-  for (let i = 0; i < arr.length; i += 1) {
-    if (res.indexOf(arr[i] === -1)) {
-      res.push(arr[i]);
-    }
-  }
-  return res;
+  const res = new Set(arr);
+  return [...res];
 }
 
 /**
@@ -576,11 +614,7 @@ function group(/* array, keySelector, valueSelector */) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-  const res = [];
-  for (let i = 0; i < arr.length; i += 1) {
-    res.push(childrenSelector(arr[i]));
-  }
-  return res;
+  return arr.map((item) => childrenSelector(item)).flat();
 }
 
 
@@ -621,27 +655,11 @@ function getElementByIndexes(arr, indexes) {
  *
  */
 function swapHeadAndTail(arr) {
-  const res = [];
-  if (arr.length === 1) {
-    res.push(arr[0]);
-  } else if (arr.length % 2 !== 0) {
-    const middleNumber = Math.floor(arr.length / 2) + 1;
-    for (let i = middleNumber; i < arr.length; i += 1) {
-      res.push(arr[i]);
-    }
-    res.push(middleNumber);
-    for (let i = 0; i < middleNumber; i += 1) {
-      res.push(arr[i]);
-    }
-  } else {
-    for (let i = arr.length / 2; i < arr.length; i += 1) {
-      res.push(arr[i]);
-    }
-    for (let i = 0; i < arr.length / 2; i += 1) {
-      res.push(arr[i]);
-    }
+  const midValue = Math.floor(arr.length / 2);
+  if (arr.length % 2 === 0) {
+    return [...arr.slice(midValue), ...arr.slice(0, midValue)];
   }
-  return res;
+  return [...arr.slice(midValue + 1), arr[midValue], ...arr.slice(0, midValue)];
 }
 
 
